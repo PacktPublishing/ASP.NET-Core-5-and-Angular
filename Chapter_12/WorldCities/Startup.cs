@@ -14,8 +14,6 @@ using WorldCities.Data.Models;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using WorldCities.Services;
-using NETCore.MailKit.Extensions;
-using NETCore.MailKit.Infrastructure.Internal;
 using System;
 using Microsoft.AspNetCore.HttpOverrides;
 using Serilog;
@@ -89,19 +87,15 @@ namespace WorldCities
 
             // IEmailSender implementation using MailKit
             // (disable it if you want to use the SendGrid-based implementation instead)
-            services.AddMailKit(optionBuilder =>
+            services.AddTransient<IEmailSender, MailKitEmailSender>();
+            services.Configure<MailKitEmailSenderOptions>(options =>
             {
-                optionBuilder.UseMailKit(new MailKitOptions()
-                {
-                    Server = Configuration["ExternalProviders:MailKit:SMTP:Address"],
-                    Port = Convert.ToInt32(Configuration["ExternalProviders:MailKit:SMTP:Port"]),
-                    Account = Configuration["ExternalProviders:MailKit:SMTP:Account"],
-                    Password = Configuration["ExternalProviders:MailKit:SMTP:Password"],
-                    SenderEmail = Configuration["ExternalProviders:MailKit:SMTP:SenderEmail"],
-                    SenderName = Configuration["ExternalProviders:MailKit:SMTP:SenderName"],
-                    // Set it to TRUE to enable ssl or tls, FALSE otherwise
-                    Security = true
-                });
+                options.Host_Address = Configuration["ExternalProviders:MailKit:SMTP:Address"];
+                options.Host_Port = Convert.ToInt32(Configuration["ExternalProviders:MailKit:SMTP:Port"]);
+                options.Host_Username = Configuration["ExternalProviders:MailKit:SMTP:Account"];
+                options.Host_Password = Configuration["ExternalProviders:MailKit:SMTP:Password"];
+                options.Sender_EMail = Configuration["ExternalProviders:MailKit:SMTP:SenderEmail"];
+                options.Sender_Name = Configuration["ExternalProviders:MailKit:SMTP:SenderName"];
             });
         }
 
