@@ -70,7 +70,7 @@ export class CountryEditComponent implements OnInit {
       // EDIT MODE
 
       // fetch the country from the server
-      var url = this.baseUrl + "api/countries/" + this.id;
+      var url = this.baseUrl + "api/Countries/" + this.id;
       this.http.get<Country>(url).subscribe(result => {
           this.country = result;
           this.title = "Edit - " + this.country.name;
@@ -97,7 +97,7 @@ export class CountryEditComponent implements OnInit {
     if (this.id) {
       // EDIT mode
 
-      var url = this.baseUrl + "api/countries/" + this.country.id;
+      var url = this.baseUrl + "api/Countries/" + this.country.id;
       this.http
         .put<Country>(url, country)
         .subscribe(result => {
@@ -110,7 +110,7 @@ export class CountryEditComponent implements OnInit {
     }
     else {
       // ADD NEW mode
-      var url = this.baseUrl + "api/countries";
+      var url = this.baseUrl + "api/Countries";
       this.http
         .post<Country>(url, country)
         .subscribe(result => {
@@ -130,7 +130,7 @@ export class CountryEditComponent implements OnInit {
         .set("countryId", (this.id) ? this.id.toString() : "0")
         .set("fieldName", fieldName)
         .set("fieldValue", control.value);
-      var url = this.baseUrl + "api/countries/IsDupeField";
+      var url = this.baseUrl + "api/Countries/IsDupeField";
       return this.http.post<boolean>(url, null, { params })
         .pipe(map(result => {
           return (result ? { isDupeField: true } : null);

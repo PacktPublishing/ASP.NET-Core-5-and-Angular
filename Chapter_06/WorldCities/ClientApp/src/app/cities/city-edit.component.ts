@@ -61,7 +61,7 @@ export class CityEditComponent implements OnInit {
       // EDIT MODE
 
       // fetch the city from the server
-      var url = this.baseUrl + "api/cities/" + this.id;
+      var url = this.baseUrl + "api/Cities/" + this.id;
       this.http.get<City>(url).subscribe(result => {
         this.city = result;
         this.title = "Edit - " + this.city.name;
@@ -79,7 +79,7 @@ export class CityEditComponent implements OnInit {
 
   loadCountries() {
     // fetch all the countries from the server
-    var url = this.baseUrl + "api/countries";
+    var url = this.baseUrl + "api/Countries";
     var params = new HttpParams()
       .set("pageIndex", "0")
       .set("pageSize", "9999")
@@ -102,7 +102,7 @@ export class CityEditComponent implements OnInit {
     if (this.id) {
       // EDIT mode
 
-      var url = this.baseUrl + "api/cities/" + this.city.id;
+      var url = this.baseUrl + "api/Cities/" + this.city.id;
       this.http
         .put<City>(url, city)
         .subscribe(result => {
@@ -115,7 +115,7 @@ export class CityEditComponent implements OnInit {
     }
     else {
       // ADD NEW mode
-      var url = this.baseUrl + "api/cities";
+      var url = this.baseUrl + "api/Cities";
       this.http
         .post<City>(url, city)
         .subscribe(result => {
@@ -138,7 +138,7 @@ export class CityEditComponent implements OnInit {
       city.lon = +this.form.get("lon").value;
       city.countryId = +this.form.get("countryId").value;
 
-      var url = this.baseUrl + "api/cities/IsDupeCity";
+      var url = this.baseUrl + "api/Cities/IsDupeCity";
       return this.http.post<boolean>(url, city).pipe(map(result => {
 
           return (result ? { isDupeCity: true } : null);
