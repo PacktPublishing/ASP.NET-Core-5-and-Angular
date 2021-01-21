@@ -30,7 +30,7 @@ namespace HealthCheck
                 {
                     case IPStatus.Success:
                         var msg =
-                            $"IMCP to {Host} took {reply.RoundtripTime} ms.";
+                            $"ICMP to {Host} took {reply.RoundtripTime} ms.";
 
                         return (reply.RoundtripTime > HealthyRoundtripTime)
                             ? HealthCheckResult.Degraded(msg)
@@ -38,14 +38,14 @@ namespace HealthCheck
 
                     default:
                         var err =
-                            $"IMCP to {Host} failed: {reply.Status}";
+                            $"ICMP to {Host} failed: {reply.Status}";
                         return HealthCheckResult.Unhealthy(err);
                 }
             }
             catch (Exception e)
             {
                 var err =
-                    $"IMCP to {Host} failed: {e.Message}";
+                    $"ICMP to {Host} failed: {e.Message}";
                 return HealthCheckResult.Unhealthy(err);
             }
         }
