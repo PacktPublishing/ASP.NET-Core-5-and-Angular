@@ -77,8 +77,8 @@ namespace WorldCities
             services.Configure<SendGridEmailSenderOptions>(options =>
             {
                 options.ApiKey = Configuration["ExternalProviders:SendGrid:ApiKey"];
-                options.SenderEmail = Configuration["ExternalProviders:SendGrid:Sender_Email"];
-                options.SenderName = Configuration["ExternalProviders:SendGrid:Sender_Name"];
+                options.Sender_Email = Configuration["ExternalProviders:SendGrid:Sender_Email"];
+                options.Sender_Name = Configuration["ExternalProviders:SendGrid:Sender_Name"];
             });
             */
 
@@ -91,8 +91,8 @@ namespace WorldCities
                 options.Host_Port = Convert.ToInt32(Configuration["ExternalProviders:MailKit:SMTP:Port"]);
                 options.Host_Username = Configuration["ExternalProviders:MailKit:SMTP:Account"];
                 options.Host_Password = Configuration["ExternalProviders:MailKit:SMTP:Password"];
-                options.Sender_EMail = Configuration["ExternalProviders:MailKit:SMTP:SenderEmail"];
-                options.Sender_Name = Configuration["ExternalProviders:MailKit:SMTP:SenderName"];
+                options.Sender_EMail = Configuration["ExternalProviders:MailKit:SMTP:Sender_Email"];
+                options.Sender_Name = Configuration["ExternalProviders:MailKit:SMTP:Sender_Name"];
             });
         }
 

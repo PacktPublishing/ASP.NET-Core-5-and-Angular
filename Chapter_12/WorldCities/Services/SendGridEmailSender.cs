@@ -34,7 +34,7 @@ namespace WorldCities.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress(Options.SenderEmail, Options.SenderName),
+                From = new EmailAddress(Options.Sender_Email, Options.Sender_Name),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message

@@ -79,7 +79,7 @@ describe('CitiesComponent', () => {
   it('should display a "Cities" title', async(() => {
     let title = fixture.nativeElement
       .querySelector('h1');
-    expect(title.textContent).toEqual('Cities!!!');
+    expect(title.textContent).toEqual('Cities');
   }));
 
   it('should contain a table with a list of one or more cities', async(() => {
@@ -87,6 +87,6 @@ describe('CitiesComponent', () => {
       .querySelector('table.mat-table');
     let tableRows = table
       .querySelectorAll('tr.mat-row');
-    expect(tableRows.length).toBeGreaterThan(3);
+    expect(tableRows.length).toBeGreaterThan(0);
   }));
 });
