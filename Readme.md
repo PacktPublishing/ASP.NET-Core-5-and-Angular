@@ -19,3 +19,7 @@ By the end of this book, you will be equipped with the skills you need to create
 5. Explore the EF Core Fluent API and EntityTypeConfiguration classes
 6. Perform DBMS structured logging using third-party providers such as SeriLog
 7. Deploy a web application to Windows and Linux web servers, or to cloud-based PaaS solutions such as Azure App Service
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781800560338">https://packt.link/free-ebook/9781800560338 </a> </p>
